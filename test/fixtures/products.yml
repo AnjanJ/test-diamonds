@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  type: 
+  model: MyString
+  brand: MyString
+  year: 2020-03-03
+  RAM: MyString
+  external_storage: MyString
+
+two:
+  name: MyString
+  type: 
+  model: MyString
+  brand: MyString
+  year: 2020-03-03
+  RAM: MyString
+  external_storage: MyString

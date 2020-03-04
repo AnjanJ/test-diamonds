@@ -1,17 +1,29 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Products</h1>
-
-<table>
+<div class="jumbotron text-center">
+  <h1>Products</h1>
+</div>
+<%= form_tag products_path, method: "get" do %>
+  <%= select("product", "name", Product.all.collect {|p| [ p.name ] }, { include_blank: true, prompt: 'Filter by Names' }) %>
+  <%= select("product", "brand", Product.all.collect {|p| [ p.brand ] }, { include_blank: true, prompt: 'Filter by Brand' }) %>
+  <%= select("product", "model", Product.all.collect {|p| [ p.model ] }, { include_blank: true, prompt: 'Filter by Model' }) %>
+  <%= submit_tag "Filter", name: nil %>
+<% end %>
+<br/>
+<%=
+  link_to 'Download as Excel',
+  products_path(format: :xlsx), {  class: 'btn  btn-secondary'}
+%>
+<br/><br/>
+<table class="table table-dark">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Model</th>
-      <th>Brand</th>
-      <th>Year</th>
-      <th>Ram</th>
-      <th>External storage</th>
+      <th scope="col">Name</th>
+      <th scope="col">Type</th>
+      <th scope="col">Model</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Year</th>
+      <th scope="col">RAM</th>
+      <th scope="col">External storage</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,7 +32,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.type %></td>
+        <td><%= product.kind %></td>
         <td><%= product.model %></td>
         <td><%= product.brand %></td>
         <td><%= product.year %></td>
@@ -36,4 +48,6 @@
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'New Product', new_product_path, class: "btn btn-secondary btn-sm col-3" %>
+<br/> <br/>
+<%== pagy_bootstrap_nav(@pagy) %>

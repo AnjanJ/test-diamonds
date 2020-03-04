@@ -1,24 +1,19 @@
-# README
+# SETUP GUIDE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version 2.7.0
 
-Things you may want to cover:
+* Rails version 6.0.2.1
 
-* Ruby version
+* Clone repo
 
-* System dependencies
+* bundle install
 
-* Configuration
+* yarn
 
-* Database creation
+* rails db:create && rails db:migrate
 
-* Database initialization
+* rails db:seed
 
-* How to run the test suite
+* rails s
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Heroku url: 

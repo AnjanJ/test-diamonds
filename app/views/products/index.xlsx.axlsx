@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Products") do |sheet|
+  # Create the header row
+  sheet.add_row ["ID", "Name", "Model", "Brand", "Year", "RAM", "External Storage"]
+  # Create entries for each item
+  @products.each do |p|
+    sheet.add_row [p.id, p.name, p.model, p.brand, p.year, p.RAM, p.external_storage]
+    sheet.add_hyperlink location: url_for(action: "show", id: p.id, only_path: false),
+                      ref: sheet.rows.last.cells.first
+  end
+end

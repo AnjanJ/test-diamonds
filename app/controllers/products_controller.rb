@@ -7,7 +7,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @pagy, @products = pagy(Product.all)
+    @pagy, @products = pagy(Product.filter(params[:product].present? ? product_params.slice(:name, :brand, :model) : {}))
+    respond_to do |format|
+      format.xlsx do
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename='products.xlsx'"
+      end
+      format.html { render :index }
+    end
   end
 
   # GET /products/1

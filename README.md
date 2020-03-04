@@ -16,4 +16,4 @@
 
 * rails s
 
-* Heroku url: 
+* Heroku url: https://serene-cove-35202.herokuapp.com/

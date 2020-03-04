@@ -10,8 +10,9 @@
 <% end %>
 <br/>
 <%=
-  link_to 'Download as Excel',
-  products_path(format: :xlsx), {  class: 'btn  btn-secondary'}
+  link_to 'Download as Excel', 
+  products_path(format: :xlsx, product: @filter_params),
+  {  class: 'btn  btn-secondary'}
 %>
 <br/><br/>
 <table class="table table-dark">

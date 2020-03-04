@@ -7,7 +7,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @pagy, @products = pagy(Product.filter(params[:product].present? ? product_params.slice(:name, :brand, :model) : {}))
+    @filter_params = params[:product].present? ? product_params.slice(:name, :brand, :model).reject { |_, v| v.blank? } : {}
+    @pagy, @products = pagy(Product.filter(@filter_params))
     respond_to do |format|
       format.xlsx do
         response.headers[
